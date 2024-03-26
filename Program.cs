@@ -17,9 +17,9 @@ namespace ConsoleQuizzApp
             public string Answer { get; set; }
         }
 
+        // Create AskQuestion method
         static string AskQuestion(Question question)
         {
-            //Console.WriteLine($"ID: {question.Id}");
             Console.WriteLine($"Question: {question.QuestionText}");
             Console.Write("Enter your answer: ");
             string userAnswer = Console.ReadLine();
@@ -30,9 +30,12 @@ namespace ConsoleQuizzApp
         static void Main(string[] args)
         {
            // Issue with json file not loading to bin/debug file so had to manually copy it over for now
+
+           // Create file directory path variable
            string jsonFilePath = Path.Combine(Directory.GetCurrentDirectory(), "questions.json");
            string jsonData = File.ReadAllText(jsonFilePath);
 
+           // Deserialize the JSOB Object to work with said data
            List<Question> questions = JsonConvert.DeserializeObject<List<Question>>(jsonData);
 
             int score = 0;
